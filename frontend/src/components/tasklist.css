@@ -1,0 +1,108 @@
+.task-container {
+  width: 92%;
+  max-width: 1400px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+.task-title {
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+/* HEADER */
+
+.task-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 3fr 1.5fr;
+  column-gap: 80px;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  text-align: center;
+}
+
+/* SCROLL AREA */
+
+.task-body {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* ROW */
+
+.task-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 3fr 1.5fr;
+  column-gap: 80px;
+  padding: 18px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+
+.task-row:hover {
+  background: #f8fafc;
+}
+
+.task-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.task-notes {
+  color: #475569;
+  word-break: break-word;
+}
+
+/* EMPTY STATE */
+
+.empty-task {
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+}
+
+.task-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+.delete-all-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-all-btn:hover {
+  background: #dc2626;
+}
+
