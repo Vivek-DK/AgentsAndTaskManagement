@@ -6,6 +6,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-container">
 
+        {/* LEFT */}
         <div className="footer-left">
           <h3>AgentTask Manager</h3>
           <p>
@@ -14,6 +15,7 @@ function Footer() {
           </p>
         </div>
 
+        {/* CENTER */}
         <div className="footer-center">
           <h4>Tech Stack</h4>
           <ul>
@@ -24,12 +26,37 @@ function Footer() {
           </ul>
         </div>
 
+        {/* RIGHT */}
         <div className="footer-right">
           <h4>Contact</h4>
+
           <div className="footer-icons">
-            <FaGithub />
-            <FaLinkedin />
-            <FaEnvelope />
+
+            <a
+              href="https://github.com/Vivek-DK"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <FaGithub />
+            </a>
+
+            <a
+              href="https://linkedin.com/in/vivekdk1310"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+
+            <a
+              href="mailto:vivek.dkrishnamurthy@gmail.com"
+              aria-label="Email"
+            >
+              <FaEnvelope />
+            </a>
+
           </div>
         </div>
 
