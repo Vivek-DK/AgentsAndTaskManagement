@@ -219,6 +219,14 @@ https://drive.google.com/file/d/1Vj7SL-jjCAc_QgIKhqjdwApAeIZMCTAk/view?usp=shari
 
 --- 
 
+![image alt](https://github.com/Vivek-DK/AgentsAndTaskManagement/blob/97f9ac137931c32b835640079d9e2de66f37c9ca/project_images/landing_page.png)
+
+![image alt](https://github.com/Vivek-DK/AgentsAndTaskManagement/blob/97f9ac137931c32b835640079d9e2de66f37c9ca/project_images/admin-dashboard.png)
+
+![image alt](https://github.com/Vivek-DK/AgentsAndTaskManagement/blob/97f9ac137931c32b835640079d9e2de66f37c9ca/project_images/Agent-dashboard.png)
+
+---
+
 ## 📌 Future Improvements
 
 
