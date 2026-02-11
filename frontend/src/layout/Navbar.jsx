@@ -1,80 +1,102 @@
 import { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 export default function Navbar() {
+
   const navigate = useNavigate();
+
+  // get auth data from local storage
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
+
+  // logout confirmation state
   const [showConfirm, setShowConfirm] = useState(false);
 
+  // logout handler
   const logout = () => {
     localStorage.removeItem("token");
     navigate('/');
   };
 
+  // navigation helper
   function navigateTo(path) {
     navigate(path);
   }
 
   return (
     <nav className="navbar">
-      <p 
+
+      {/* logo */}
+      <p
         onClick={() => navigateTo('/')}
-        className="logo">
+        className="logo"
+      >
         AgentTask Manager
       </p>
 
       <div className="nav-actions">
-        <button className="nav-btn" onClick={() => navigateTo('/')}>Home</button>
+
+        {/* home button */}
+        <button
+          className="nav-btn"
+          onClick={() => navigateTo('/')}
+        >
+          Home
+        </button>
 
         {token ? (
           <>
-            {token && (
-              <>
-                <button
-                  className="nav-btn primary"
-                  onClick={() =>
-                    navigate(role === "admin"
-                      ? "/admin-dashboard"
-                      : "/agent-dashboard")
-                  }
-                >
-                  Dashboard
-                </button>
+            {/* dashboard button */}
+            <button
+              className="nav-btn primary"
+              onClick={() =>
+                navigate(
+                  role === "admin"
+                    ? "/admin-dashboard"
+                    : "/agent-dashboard"
+                )
+              }
+            >
+              Dashboard
+            </button>
 
-                <button
-                  className="nav-btn logout"
-                  onClick={() => setShowConfirm(true)}
-                >
-                  Logout
-                </button>
-              </>
-            )}
+            {/* logout button */}
+            <button
+              className="nav-btn logout"
+              onClick={() => setShowConfirm(true)}
+            >
+              Logout
+            </button>
           </>
         ) : (
           <>
+            {/* admin login */}
             <button
               className="nav-btn"
               onClick={() => navigateTo('/login/admin')}
             >
               Admin Login
             </button>
+
+            {/* agent login */}
             <button
               className="nav-btn"
-              onClick={() => navigateTo('/login/agent')}  
+              onClick={() => navigateTo('/login/agent')}
             >
               Agent Login
             </button>
           </>
         )}
       </div>
+
+      {/* logout confirmation modal */}
       {showConfirm && (
-        <div 
+        <div
           className="logout-overlaybtn"
           onClick={() => setShowConfirm(false)}
-          >
-          <div 
+        >
+          <div
             className="logout-modals"
             onClick={(e) => e.stopPropagation()}
           >
@@ -100,6 +122,5 @@ export default function Navbar() {
         </div>
       )}
     </nav>
-
   );
 }

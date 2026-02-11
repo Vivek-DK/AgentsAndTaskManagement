@@ -1,3 +1,5 @@
+/* ================= DASHBOARD CONTAINER ================= */
+
 .agent-dashboard {
   padding: 30px 40px;
   max-width: 1400px;
@@ -5,7 +7,8 @@
   animation: fadeIn 0.4s ease;
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
 
 .dashboard-header {
   margin-bottom: 25px;
@@ -22,7 +25,8 @@
   margin-top: 5px;
 }
 
-/* TOP SECTION */
+
+/* ================= TOP SECTION ================= */
 
 .dashboard-top {
   display: flex;
@@ -31,7 +35,8 @@
   flex-wrap: wrap;
 }
 
-/* AGENT CARD */
+
+/* ================= AGENT INFO CARD ================= */
 
 .agent-info-card {
   flex: 2;
@@ -67,7 +72,8 @@
   font-weight: bold;
 }
 
-/* STATS CARD */
+
+/* ================= STATS CARD ================= */
 
 .stats-card {
   flex: 1;
@@ -96,7 +102,8 @@
   color: #1e293b;
 }
 
-/* TASK SECTION */
+
+/* ================= TASK SECTION ================= */
 
 .agent-task-container {
   background: white;
@@ -110,7 +117,8 @@
   color: #0f172a;
 }
 
-/* GRID */
+
+/* ================= GRID ================= */
 
 .task-grid {
   display: grid;
@@ -118,7 +126,8 @@
   gap: 16px;
 }
 
-/* TASK CARD */
+
+/* ================= TASK CARD ================= */
 
 .agent-task-card {
   padding: 16px;
@@ -147,14 +156,16 @@
   font-size: 14px;
 }
 
-/* STATES */
+
+/* ================= STATES ================= */
 
 .loading,
 .empty {
   color: #64748b;
 }
 
-/* ANIMATIONS */
+
+/* ================= ANIMATIONS ================= */
 
 @keyframes fadeUp {
   from {

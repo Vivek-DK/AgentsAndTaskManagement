@@ -1,8 +1,10 @@
 const Task = require("../models/Task");
 const Agent = require("../models/Agent");
 
+// get tasks for logged-in agent
 const getMyTasks = async (req, res) => {
   try {
+    // find agent using logged-in user's email
     const agent = await Agent.findOne({
       email: req.user.email
     });
@@ -13,10 +15,11 @@ const getMyTasks = async (req, res) => {
       });
     }
 
+    // fetch tasks assigned to this agent
     const tasks = await Task.find({
       agent: agent._id
     })
-      .populate("agent", "name email mobile") 
+      .populate("agent", "name email mobile")
       .sort({ createdAt: -1 });
 
     res.json(tasks);
@@ -29,6 +32,8 @@ const getMyTasks = async (req, res) => {
   }
 };
 
+
+// get tasks by specific agent id (admin use)
 const getTasksByAgentId = async (req, res) => {
   try {
     const tasks = await Task.find({
@@ -47,6 +52,8 @@ const getTasksByAgentId = async (req, res) => {
   }
 };
 
+
+// DELETE single task
 // DELETE /api/tasks/:id
 const deleteTask = async (req, res) => {
   try {
@@ -58,6 +65,8 @@ const deleteTask = async (req, res) => {
   }
 };
 
+
+// DELETE all tasks (admin action)
 // DELETE /api/tasks
 const deleteAllTasks = async (req, res) => {
   try {
@@ -68,5 +77,9 @@ const deleteAllTasks = async (req, res) => {
   }
 };
 
-
-module.exports = { getMyTasks, getTasksByAgentId, deleteTask, deleteAllTasks };
+module.exports = {
+  getMyTasks,
+  getTasksByAgentId,
+  deleteTask,
+  deleteAllTasks
+};

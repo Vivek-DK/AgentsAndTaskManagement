@@ -4,11 +4,14 @@ import "./addAdmin.css";
 
 export default function AddAdmin() {
 
+  // form state
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
+    mobile: ""
   });
 
+  // UI states
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -21,17 +24,29 @@ export default function AddAdmin() {
   const isValidPassword = (password) =>
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}\-_=+|\\:;"'<>,./]).{8,}$/.test(password);
 
+  // phone validation (10 digit Indian number)
+  const isValidPhone = (mobile) =>
+    /^[6-9]\d{9}$/.test(mobile);
+
+  // form submit handler
   const submit = async () => {
     setError("");
     setSuccess("");
 
-    if (!form.email || !form.password) {
+    // required fields check
+    if (!form.email || !form.password || !form.mobile) {
       setError("All fields are required");
       return;
     }
 
+    // validations
     if (!isValidEmail(form.email)) {
       setError("Invalid email format");
+      return;
+    }
+
+    if (!isValidPhone(form.mobile)) {
+      setError("Enter valid 10 digit mobile number");
       return;
     }
 
@@ -45,13 +60,16 @@ export default function AddAdmin() {
     try {
       setLoading(true);
 
+      // API call to create admin
       await axios.post("/admin/create-admin", form);
 
       setSuccess("Admin created successfully");
 
+      // reset form
       setForm({
         email: "",
-        password: ""
+        password: "",
+        mobile: ""
       });
 
     } catch (err) {
@@ -69,9 +87,11 @@ export default function AddAdmin() {
 
       <h3>Create Admin</h3>
 
+      {/* error and success messages */}
       {error && <div className="error-msg">{error}</div>}
       {success && <div className="success-msg">{success}</div>}
 
+      {/* EMAIL */}
       <div className="input-group">
         <input
           value={form.email}
@@ -82,6 +102,19 @@ export default function AddAdmin() {
         <label>Email</label>
       </div>
 
+      {/* PHONE */}
+      <div className="input-group">
+        <input
+          value={form.mobile}
+          onChange={(e) =>
+            setForm({ ...form, mobile: e.target.value })
+          }
+          maxLength={10}
+        />
+        <label>Mobile Number</label>
+      </div>
+
+      {/* PASSWORD */}
       <div className="input-group">
         <input
           type="password"

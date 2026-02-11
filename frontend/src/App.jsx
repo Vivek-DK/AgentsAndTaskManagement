@@ -13,11 +13,13 @@ function App() {
   return (
     <Router>
       <Routes>
+
+        {/* public routes */}
         <Route path="/" element={<Landing />} />
         <Route path="/login/admin" element={<Login role="admin" />} />
         <Route path="/login/agent" element={<Login role="agent" />} />
 
-        {/* Dashboard main */}
+        {/* admin dashboard main */}
         <Route
           path="/admin-dashboard"
           element={
@@ -29,7 +31,7 @@ function App() {
           }
         />
 
-        {/* Dashboard sub-pages */}
+        {/* admin agents page */}
         <Route
           path="/admin-dashboard/agents"
           element={
@@ -41,6 +43,7 @@ function App() {
           }
         />
 
+        {/* admin tasks page (admin only) */}
         <Route
           path="/admin-dashboard/tasks"
           element={
@@ -51,14 +54,19 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/agent-dashboard" element={
-          <ProtectedRoute role="agent">
-            <Layout>
-              <AgentDashboard />
+
+        {/* agent dashboard */}
+        <Route
+          path="/agent-dashboard"
+          element={
+            <ProtectedRoute role="agent">
+              <Layout>
+                <AgentDashboard />
               </Layout>
-          </ProtectedRoute>
-          } 
+            </ProtectedRoute>
+          }
         />
+
       </Routes>
     </Router>
   );

@@ -5,24 +5,33 @@ import Footer from "../components/Footer";
 import "./landing.css";
 
 function Landing() {
+
   const navigate = useNavigate();
 
+  // check if user already logged in
   const token = localStorage.getItem("token");
 
+  // warning modal state
   const [showWarning, setShowWarning] = useState(false);
+
+  // store which login user selected
   const [targetLogin, setTargetLogin] = useState("");
 
+  // handle login button click
   const handleLoginClick = (type) => {
+
+    // if not logged in → go directly
     if (!token) {
       navigate(`/login/${type}`);
       return;
     }
 
-    // already logged in → show warning
+    // already logged in → show warning modal
     setTargetLogin(type);
     setShowWarning(true);
   };
 
+  // logout and redirect to selected login page
   const confirmLogoutAndContinue = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
@@ -33,12 +42,15 @@ function Landing() {
   return (
     <>
       <div className="landing-container">
+
         <Navbar />
 
+        {/* background animated shapes */}
         <div className="shape shape1"></div>
         <div className="shape shape2"></div>
         <div className="shape shape3"></div>
 
+        {/* preview card - agents */}
         <div className="dashboard-preview">
           <div className="preview-card">
             <div className="preview-header">Agents</div>
@@ -48,6 +60,7 @@ function Landing() {
           </div>
         </div>
 
+        {/* preview card - tasks */}
         <div className="dashboard-preview-1">
           <div className="preview-card">
             <div className="preview-header">Tasks</div>
@@ -57,7 +70,9 @@ function Landing() {
           </div>
         </div>
 
+        {/* hero section */}
         <div className="hero">
+
           <h1 className="hero-title">
             Manage Agents & Tasks <span>Efficiently</span>
           </h1>
@@ -67,6 +82,7 @@ function Landing() {
             and manage your workflow with ease.
           </p>
 
+          {/* login buttons */}
           <div className="cta-group">
             <button
               className="cta-btn admin"
@@ -84,7 +100,7 @@ function Landing() {
           </div>
         </div>
 
-        {/* WARNING MODAL */}
+        {/* warning modal if already logged in */}
         {showWarning && (
           <div className="logout-overlay">
             <div className="logout-modal">
@@ -111,10 +127,11 @@ function Landing() {
             </div>
           </div>
         )}
+
       </div>
+
       <Footer />
     </>
-    
   );
 }
 

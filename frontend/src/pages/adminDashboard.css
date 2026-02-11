@@ -1,92 +1,159 @@
+/* ================= DASHBOARD CONTAINER ================= */
+
 .dashboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
 .dashboard-title {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
+
+
+/* ================= ADMIN INFO CARD ================= */
+
+.admin-info-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #4186f5, #27417e);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  animation: slideDown 0.4s ease;
+}
+
+.admin-avatar {
+  width: 50px;
+  height: 50px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.admin-role {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.admin-name {
+  margin: 0;
+}
+
+.admin-phone {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+
+/* ================= TOP NAVIGATION ================= */
 
 .dashboard-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.dashboard-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.action-btn {
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-
-  background: linear-gradient(135deg, #3b82f6, #6366f1);
-  color: white;
-
-  transition: all 0.25s ease;
-}
-
-.action-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(59,130,246,0.25);
+  width: 100%;
 }
 
 .dashboard-tabs {
   display: flex;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
+  width: 100%;
 }
 
+.tab-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-tab-group {
+  display: flex;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+
+
+/* ================= TABS ================= */
+
 .tab {
-  padding: 10px 22px;
-  border-radius: 8px;
+  padding: 8px 16px;
   border: none;
+  background: #e5e7eb;
   cursor: pointer;
-  background: #e2e8f0;
-  color: #334155;
-  font-weight: 600;
-  transition: all 0.25s ease;
+  border-radius: 6px;
+  transition: 0.2s;
 }
 
 .tab:hover {
-  transform: translateY(-1px);
-  background: #cbd5f5;
+  background: #d1d5db;
 }
 
 .tab.active {
-  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  background: #111827;
   color: white;
-  box-shadow: 0 6px 16px rgba(59,130,246,0.25);
 }
 
-.dashboard-content {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+/* admin buttons */
+.tab.admin {
+  background: #2563eb;
+  color: white;
 }
 
-.agent-section {
+.tab.admin:hover {
+  background: #1d4ed8;
+}
+
+.tab.danger {
+  background: #ef4444;
+  color: white;
+}
+
+.tab.danger:hover {
+  background: #dc2626;
+}
+
+
+/* ================= FORM ALIGNMENT ================= */
+
+.agent-form,
+.task-form {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
+
+
+/* ================= CONTENT ANIMATION ================= */
 
 .fade-in {
-  animation: fadeIn 0.35s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;

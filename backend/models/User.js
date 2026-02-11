@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
+      trim: true
     },
     password: {
       type: String,
@@ -15,6 +17,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["admin", "agent"],
       default: "agent"
+    },
+    mobile: {
+      type: String,
+      required: true,
     },
     isSuperAdmin: {
     type: Boolean,

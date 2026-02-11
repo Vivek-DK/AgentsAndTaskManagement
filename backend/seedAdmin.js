@@ -6,13 +6,16 @@ const User = require("./models/User");
 
 dotenv.config();
 
+// seed script to create initial super admin
 const seedAdmin = async () => {
   try {
+    // connect to database
     await mongoose.connect(process.env.MONGO_URI);
     console.log("MongoDB Connected");
 
+    // check if super admin already exists
     const existingAdmin = await User.findOne({
-      email: "admin@test.com",
+      email: "superAdmin@gmail.com",
     });
 
     if (existingAdmin) {
@@ -20,19 +23,23 @@ const seedAdmin = async () => {
       process.exit();
     }
 
+    // hash default password
     const hashedPassword = await bcrypt.hash("Admin@123", 10);
 
+    // create super admin user
     await User.create({
-      email: "admin@test.com",
+      email: "superAdmin@gmail.com",
       password: hashedPassword,
       role: "admin",
-      isSuperAdmin: true   // ✅ THIS IS THE IMPORTANT PART
+      mobile: 7348862962,
+      isSuperAdmin: true  
     });
 
     console.log("Super Admin created successfully");
     process.exit();
 
   } catch (error) {
+    // log error if something fails
     console.error(error);
     process.exit(1);
   }

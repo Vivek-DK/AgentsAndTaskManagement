@@ -1,3 +1,5 @@
+/* ================= CONTAINER ================= */
+
 .agents-container {
   padding: 30px 40px;
   max-width: 1400px;
@@ -13,7 +15,8 @@
   text-align: center;
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
 
 .agent-header {
   display: grid;
@@ -34,6 +37,9 @@
   z-index: 5;
 }
 
+
+/* ================= SCROLL AREA ================= */
+
 .agents-scroll {
   max-height: 420px;
   overflow-y: auto;
@@ -48,17 +54,24 @@
   border-radius: 4px;
 }
 
-/* ROW WRAPPER */
+
+/* ================= ROW WRAPPER ================= */
 
 .agent-row-wrapper {
   border-bottom: 1px solid #e2e8f0;
 }
 
-/* ROW */
+
+/* ================= ROW ================= */
 
 .agent-row {
   display: grid;
-  grid-template-columns: minmax(150px,1.5fr) minmax(200px,2.5fr) minmax(150px,1.5fr) 60px;
+  grid-template-columns:
+    minmax(150px,1.5fr)
+    minmax(200px,2.5fr)
+    minmax(150px,1.5fr)
+    60px;
+
   padding: 18px 20px;
   align-items: center;
   background: white;
@@ -83,12 +96,13 @@
   color: #0f172a;
 }
 
-.empty-state {  
+.empty-state {
   text-align: center;
   color: #64748b;
 }
 
-/* EXPAND BUTTON */
+
+/* ================= EXPAND BUTTON ================= */
 
 .expand-btn {
   border: none;
@@ -118,7 +132,8 @@
   transform: rotate(90deg);
 }
 
-/* EXPAND PANEL */
+
+/* ================= EXPAND PANEL ================= */
 
 .agent-expand {
   max-height: 0;
@@ -165,7 +180,8 @@
   border-radius: 4px;
 }
 
-/* TASK PANEL */
+
+/* ================= TASK PANEL ================= */
 
 .task-panel {
   padding: 20px;
@@ -188,7 +204,8 @@
   background: #fecaca;
 }
 
-/* ANIMATION */
+
+/* ================= ANIMATION ================= */
 
 @keyframes fadeIn {
   from {

@@ -1,3 +1,5 @@
+/* ================= CONTAINER ================= */
+
 .task-container {
   width: 92%;
   max-width: 1400px;
@@ -13,16 +15,20 @@
   margin-bottom: 10px;
 }
 
+
+/* ================= TABLE LAYOUT ================= */
+
 .task-header,
 .task-row {
   display: grid;
-  grid-template-columns: 1.5fr 1.5fr 3fr 1.5fr 100px;  
+  grid-template-columns: 1.5fr 1.5fr 3fr 1.5fr 100px;
   align-items: center;
   column-gap: 40px;
   text-align: center;
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
 
 .task-header {
   padding: 14px 16px;
@@ -35,14 +41,16 @@
   z-index: 5;
 }
 
-/* BODY */
+
+/* ================= BODY ================= */
 
 .task-body {
   max-height: 420px;
   overflow-y: auto;
 }
 
-/* ROW */
+
+/* ================= ROW ================= */
 
 .task-row {
   padding: 18px 16px;
@@ -63,14 +71,15 @@
 .task-notes {
   color: #475569;
   word-break: break-word;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
-.task-phone{
+.task-phone {
   margin-left: 15px;
 }
 
-/* EMPTY */
+
+/* ================= EMPTY STATE ================= */
 
 .empty-task {
   padding: 40px;
@@ -78,7 +87,8 @@
   color: #64748b;
 }
 
-/* BUTTON */
+
+/* ================= BUTTONS ================= */
 
 .delete-btn {
   background: #fee2e2;

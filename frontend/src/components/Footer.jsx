@@ -4,9 +4,10 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="footer">
+
       <div className="footer-container">
 
-        {/* LEFT */}
+        {/* LEFT SECTION */}
         <div className="footer-left">
           <h3>AgentTask Manager</h3>
           <p>
@@ -15,7 +16,7 @@ function Footer() {
           </p>
         </div>
 
-        {/* CENTER */}
+        {/* CENTER SECTION */}
         <div className="footer-center">
           <h4>Tech Stack</h4>
           <ul>
@@ -26,12 +27,13 @@ function Footer() {
           </ul>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT SECTION */}
         <div className="footer-right">
           <h4>Contact</h4>
 
           <div className="footer-icons">
 
+            {/* GitHub */}
             <a
               href="https://github.com/Vivek-DK"
               target="_blank"
@@ -41,6 +43,7 @@ function Footer() {
               <FaGithub />
             </a>
 
+            {/* LinkedIn */}
             <a
               href="https://linkedin.com/in/vivekdk1310"
               target="_blank"
@@ -50,6 +53,7 @@ function Footer() {
               <FaLinkedin />
             </a>
 
+            {/* Email */}
             <a
               href="mailto:vivek.dkrishnamurthy@gmail.com"
               aria-label="Email"
@@ -62,6 +66,7 @@ function Footer() {
 
       </div>
 
+      {/* bottom copyright */}
       <div className="footer-bottom">
         © 2026 Agent & Task Manager — Built with MERN Stack
       </div>

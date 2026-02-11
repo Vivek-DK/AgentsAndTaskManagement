@@ -1,3 +1,5 @@
+/* ================= FOOTER CONTAINER ================= */
+
 .footer {
   background: linear-gradient(135deg, #0f172a, #020617);
   color: #e2e8f0;
@@ -14,6 +16,9 @@
   padding-bottom: 30px;
 }
 
+
+/* ================= LEFT SECTION ================= */
+
 .footer-left h3 {
   color: #38bdf8;
   margin-bottom: 10px;
@@ -24,6 +29,9 @@
   line-height: 1.6;
   color: #94a3b8;
 }
+
+
+/* ================= CENTER & RIGHT ================= */
 
 .footer-center h4,
 .footer-right h4 {
@@ -41,6 +49,9 @@
   color: #94a3b8;
 }
 
+
+/* ================= SOCIAL ICONS ================= */
+
 .footer-icons {
   display: flex;
   gap: 15px;
@@ -56,6 +67,9 @@
   color: #38bdf8;
   transform: translateY(-2px);
 }
+
+
+/* ================= FOOTER BOTTOM ================= */
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);

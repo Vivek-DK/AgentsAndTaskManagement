@@ -4,15 +4,26 @@ import { FaChevronRight } from "react-icons/fa";
 import "./agents.css";
 
 export default function Agents() {
+
+  // store agents list
   const [agents, setAgents] = useState([]);
+
+  // currently expanded agent row
   const [expandedAgent, setExpandedAgent] = useState(null);
+
+  // cache tasks per agent to avoid refetching
   const [agentTasks, setAgentTasks] = useState({});
+
   const role = localStorage.getItem("role");
+
+  // agent id waiting for confirmation
   const [confirmDelete, setConfirmDelete] = useState(null);
 
+  // load agents on component mount
   useEffect(() => {
     axios.get("/agents")
       .then(res => {
+        // newest agents first
         const sortedAgents = res.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -21,7 +32,9 @@ export default function Agents() {
       .catch(err => console.error(err));
   }, []);
 
+  // expand/collapse agent and fetch tasks if needed
   const toggleAgent = async (id) => {
+
     if (expandedAgent === id) {
       setExpandedAgent(null);
       return;
@@ -29,7 +42,7 @@ export default function Agents() {
 
     setExpandedAgent(id);
 
-    // fetch only if not already loaded
+    // fetch tasks only once
     if (!agentTasks[id]) {
       try {
         const res = await axios.get(`/tasks/agent/${id}`);
@@ -44,11 +57,15 @@ export default function Agents() {
     }
   };
 
+  // deactivate selected agent
   const deactivateAgent = async () => {
     try {
       await axios.delete(`/agents/${confirmDelete}`);
+
+      // refresh agent list
       const res = await axios.get("/agents");
       setAgents(res.data);
+
       setConfirmDelete(null);
     } catch (err) {
       alert(err.response?.data?.message || "Deactivation failed");
@@ -57,17 +74,20 @@ export default function Agents() {
 
   return (
     <div className="agentscontainer">
+
       <h2 className="agents-title">Agents</h2>
 
       {agents.length === 0 ? (
 
+        // empty state
         <div className="empty-state">
           No agents added yet
         </div>
+
       ) : (
 
         <>
-          {/* HEADER */}
+          {/* TABLE HEADER */}
           <div className="agent-header">
             <span>Name</span>
             <span>Email</span>
@@ -75,7 +95,7 @@ export default function Agents() {
             <span></span>
           </div>
 
-          {/* ROWS */}
+          {/* AGENT LIST */}
           <div className="agents-scroll">
             {agents.map((agent) => (
               <div key={agent._id} className="agent-row-wrapper">
@@ -85,6 +105,7 @@ export default function Agents() {
                   <span>{agent.email}</span>
                   <span>{agent.mobile}</span>
 
+                  {/* expand button */}
                   <button
                     className={`expand-btn ${
                       expandedAgent === agent._id ? "open" : ""
@@ -93,7 +114,8 @@ export default function Agents() {
                   >
                     <FaChevronRight />
                   </button>
-    
+
+                  {/* admin only action */}
                   {role === "admin" && (
                     <button
                       className="delete-agent-btn"
@@ -102,6 +124,8 @@ export default function Agents() {
                       Deactivate
                     </button>
                   )}
+
+                  {/* confirmation modal */}
                   {confirmDelete && (
                     <div className="logout-overlay">
                       <div className="logout-modal">
@@ -127,6 +151,8 @@ export default function Agents() {
                     </div>
                   )}
                 </div>
+
+                {/* expanded task panel */}
                 <div
                   className={`agent-expand ${
                     expandedAgent === agent._id ? "show" : ""
@@ -146,12 +172,14 @@ export default function Agents() {
                                 <span> • {task.Phone}</span> <br />
                                 <strong>{task.Notes}</strong>
                               </div>
+
                               <div className="task-note">
                                 {task.notes}
                               </div>
                             </div>
                           ))}
-                        </div>  
+                        </div>
+
                         <p className="task-count">
                           Total tasks assigned: {agentTasks[agent._id].length}
                         </p>
@@ -162,7 +190,6 @@ export default function Agents() {
 
                   </div>
                 </div>
-
 
               </div>
             ))}

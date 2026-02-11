@@ -3,15 +3,19 @@ import axios from "../api/axios";
 import "./agentDashboard.css";
 
 function AgentDashboard() {
+
+  // state for tasks and agent info
   const [tasks, setTasks] = useState([]);
   const [agent, setAgent] = useState(null);
   const [loadingTasks, setLoadingTasks] = useState(true);
 
+  // fetch data on component load
   useEffect(() => {
     fetchAgent();
     fetchTasks();
   }, []);
 
+  // fetch logged-in agent details
   const fetchAgent = async () => {
     try {
       const res = await axios.get("/agents/me");
@@ -21,6 +25,7 @@ function AgentDashboard() {
     }
   };
 
+  // fetch tasks assigned to agent
   const fetchTasks = async () => {
     try {
       const res = await axios.get("/tasks/my-tasks");
@@ -63,7 +68,7 @@ function AgentDashboard() {
 
       </div>
 
-      {/* TASKS */}
+      {/* TASKS SECTION */}
       <div className="agent-task-container">
         <h3>Assigned Tasks</h3>
 
@@ -89,4 +94,5 @@ function AgentDashboard() {
     </div>
   );
 }
+
 export default AgentDashboard;

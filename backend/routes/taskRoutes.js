@@ -11,8 +11,10 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 const authorize = require("../middleware/authorize");
 
+// get tasks of logged-in agent
 router.get("/my-tasks", protect, getMyTasks);
 
+// get tasks by specific agent (admin only)
 router.get(
   "/agent/:agentId",
   protect,
@@ -20,8 +22,10 @@ router.get(
   getTasksByAgentId
 );
 
+// delete single task (admin only)
 router.delete("/:id", protect, authorize("admin"), deleteTask);
-router.delete("/", protect, authorize("admin"), deleteAllTasks);
 
+// delete all tasks (admin only)
+router.delete("/", protect, authorize("admin"), deleteAllTasks);
 
 module.exports = router;

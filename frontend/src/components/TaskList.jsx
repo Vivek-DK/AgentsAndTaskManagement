@@ -3,10 +3,13 @@ import axios from "../api/axios";
 import "./tasklist.css";
 
 export default function TaskList() {
+
+  // state for tasks and delete confirmations
   const [tasks, setTasks] = useState([]);
   const [showDeleteAllConfirm, setShowDeleteAllConfirm] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
 
+  // fetch tasks on component load
   useEffect(() => {
     axios.get("/upload/tasks")
       .then(res => setTasks(res.data))

@@ -1,4 +1,5 @@
-/* NAVBAR CONTAINER */
+/* ================= NAVBAR CONTAINER ================= */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -9,7 +10,9 @@
   backdrop-filter: blur(12px);
 }
 
-/* WEBSITE NAME */
+
+/* ================= WEBSITE NAME ================= */
+
 .logo {
   font-size: 20px;
   font-weight: 700;
@@ -26,13 +29,17 @@
   transform: scale(1.05);
 }
 
-/* BUTTON GROUP */
+
+/* ================= BUTTON GROUP ================= */
+
 .nav-actions {
   display: flex;
   gap: 12px;
 }
 
-/* BASE BUTTON */
+
+/* ================= BASE BUTTON ================= */
+
 .nav-btn {
   padding: 8px 16px;
   border-radius: 8px;
@@ -45,13 +52,16 @@
   transition: all 0.25s ease;
 }
 
-/* HOVER EFFECT */
+
+/* hover effect */
 .nav-btn:hover {
   background: #f1f5f9;
   transform: translateY(-1px);
 }
 
-/* PRIMARY BUTTON */
+
+/* ================= PRIMARY BUTTON ================= */
+
 .nav-btn.primary {
   background: linear-gradient(135deg, #3b82f6, #6366f1);
   color: white;
@@ -63,7 +73,9 @@
   transform: translateY(-2px);
 }
 
-/* LOGOUT BUTTON */
+
+/* ================= LOGOUT BUTTON ================= */
+
 .nav-btn.logout {
   color: #ef4444;
 }
@@ -71,6 +83,9 @@
 .nav-btn.logout:hover {
   background: #fee2e2;
 }
+
+
+/* ================= LOGOUT MODAL ================= */
 
 .logout-overlaybtn {
   position: fixed;
@@ -99,6 +114,9 @@
   gap: 10px;
   justify-content: center;
 }
+
+
+/* ================= ANIMATION ================= */
 
 @keyframes fadeUp {
   from {

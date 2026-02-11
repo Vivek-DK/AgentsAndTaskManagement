@@ -1,3 +1,5 @@
+/* ================= CARD CONTAINER ================= */
+
 .add-admin-card {
   width: 380px;
   margin: auto;
@@ -14,7 +16,8 @@
   color: #1e293b;
 }
 
-/* INPUT GROUP */
+
+/* ================= INPUT GROUP ================= */
 
 .input-group {
   position: relative;
@@ -30,6 +33,7 @@
   font-size: 14px;
 }
 
+/* floating label */
 .input-group label {
   position: absolute;
   left: 10px;
@@ -48,7 +52,8 @@
   color: #6366f1;
 }
 
-/* BUTTON */
+
+/* ================= BUTTON ================= */
 
 .add-admin-btn {
   width: 100%;
@@ -66,7 +71,8 @@
   box-shadow: 0 10px 18px rgba(99,102,241,0.3);
 }
 
-/* STATES */
+
+/* ================= STATES ================= */
 
 .error-msg {
   background: #fee2e2;
@@ -86,7 +92,8 @@
   font-size: 14px;
 }
 
-/* LOADER */
+
+/* ================= LOADER ================= */
 
 .loader {
   width: 18px;
@@ -101,6 +108,9 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+
+/* ================= ANIMATION ================= */
 
 @keyframes fadeUp {
   from {

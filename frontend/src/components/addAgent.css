@@ -1,6 +1,12 @@
+/* ================= GLOBAL ================= */
+
 *{
-  box-sizing: border-box  ;
+  box-sizing: border-box;
 }
+
+
+/* ================= CARD CONTAINER ================= */
+
 .add-agent-card {
   width: 500px;
   padding: 28px;
@@ -15,7 +21,8 @@
   color: #1e293b;
 }
 
-/* INPUT GROUP */
+
+/* ================= INPUT GROUP ================= */
 
 .input-group {
   position: relative;
@@ -36,11 +43,13 @@
   display: block;
 }
 
+/* focus effect */
 .input-group input:focus {
   border-color: #6366f1;
   box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
 }
 
+/* floating label */
 .input-group label {
   position: absolute;
   left: 12px;
@@ -68,7 +77,8 @@
   margin-bottom: 10px;
 }
 
-/* BUTTON */
+
+/* ================= BUTTON ================= */
 
 .add-agent-btn {
   width: 100%;
@@ -91,6 +101,9 @@
   transform: scale(0.98);
 }
 
+
+/* ================= STATES ================= */
+
 .error-msg {
   background: #fef2f2;
   color: #b91c1c;
@@ -101,7 +114,17 @@
   border: 1px solid #fecaca;
 }
 
-/* LOADER */
+.success-msg {
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+
+/* ================= LOADER ================= */
 
 .loader {
   width: 18px;
@@ -113,18 +136,8 @@
   animation: spin 0.7s linear infinite;
 }
 
-/* SUCCESS */
 
-.success-msg {
-  background: #ecfdf5;
-  color: #065f46;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 14px;
-  font-size: 14px;
-}
-
-/* ANIMATIONS */
+/* ================= ANIMATIONS ================= */
 
 @keyframes spin {
   to { transform: rotate(360deg); }

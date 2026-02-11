@@ -3,6 +3,8 @@ import axios from "../api/axios";
 import "./addAgent.css";
 
 export default function AddAgent() {
+
+  // form state
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -10,6 +12,7 @@ export default function AddAgent() {
     password: ""
   });
 
+  // UI states
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -24,33 +27,36 @@ export default function AddAgent() {
     return /^[0-9]{10}$/.test(mobile);
   };
 
+  // PASSWORD VALIDATION
   const isValidPassword = (password) => {
     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}\-_=+|\\:;"'<>,./]).{8,}$/.test(password);
   };
 
+  // submit handler
   const submit = async () => {
     setError("");
     setSuccess("");
 
-    // REQUIRED CHECK
+    // required fields check
     if (!form.name || !form.email || !form.mobile || !form.password) {
       setError("All fields are required");
       return;
     }
 
-    // EMAIL CHECK
+    // email validation
     if (!isValidEmail(form.email)) {
       setError("Enter a valid email address");
       return;
     }
 
-    // MOBILE CHECK
+    // mobile validation
     if (!isValidMobile(form.mobile)) {
       setError("Mobile number must be exactly 10 digits");
       return;
     }
 
-    if(!isValidPassword(form.password)) {
+    // password validation
+    if (!isValidPassword(form.password)) {
       setError("Password must contain uppercase, lowercase, number and special character (min 8 characters)");
       return;
     }
@@ -58,8 +64,10 @@ export default function AddAgent() {
     try {
       setLoading(true);
 
+      // API call to create agent
       await axios.post("/agents", form);
 
+      // reset form after success
       setForm({
         name: "",
         email: "",
@@ -85,57 +93,78 @@ export default function AddAgent() {
 
       <h3>Add Agent</h3>
 
+      {/* error message */}
       {error && (
         <div className="error-msg">
           {error}
         </div>
       )}
 
+      {/* success message */}
       {success && (
         <div className="success-msg">
           {success}
         </div>
       )}
 
+      {/* NAME */}
       <div className="input-group">
         <input
           value={form.name}
-          onChange={e => setForm({...form, name: e.target.value.replace(/[^a-zA-Z\s]/g, "")})}
+          onChange={e =>
+            setForm({
+              ...form,
+              name: e.target.value.replace(/[^a-zA-Z\s]/g, "")
+            })
+          }
           required
         />
         <label>Name</label>
       </div>
 
+      {/* EMAIL */}
       <div className="input-group">
         <input
           value={form.email}
-          onChange={e => setForm({...form, email: e.target.value})}
+          onChange={e =>
+            setForm({ ...form, email: e.target.value })
+          }
           required
         />
         <label>Email</label>
       </div>
 
+      {/* MOBILE */}
       <div className="input-group">
         <input
           value={form.mobile}
-          onChange={e => setForm({...form, mobile: e.target.value})}
+          onChange={e =>
+            setForm({
+              ...form,
+              mobile: e.target.value.replace(/\D/g, "")
+            })
+          }
           required
         />
         <label>Mobile</label>
       </div>
 
+      {/* PASSWORD */}
       <div className="input-group">
         <input
           type="password"
           value={form.password}
-          onChange={e => setForm({...form, password: e.target.value})}
+          onChange={e =>
+            setForm({ ...form, password: e.target.value })
+          }
           required
         />
         <label>Password</label>
       </div>
-        <small className="password-hint">
-          Must include uppercase, lowercase, number & symbol
-        </small>
+
+      <small className="password-hint">
+        Must include uppercase, lowercase, number & symbol
+      </small>
 
       <button
         className="add-agent-btn"

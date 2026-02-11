@@ -3,6 +3,8 @@ import axios from "../api/axios";
 import "./addTask.css";
 
 const AddTask = () => {
+
+  // component states
   const [file, setFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -11,11 +13,11 @@ const AddTask = () => {
 
   const inputRef = useRef();
 
+  // validate file extension
   const isValidFile = (file) => {
     if (!file) return false;
 
     const allowedExtensions = [".csv", ".xlsx", ".xls"];
-
     const fileName = file.name.toLowerCase();
 
     return allowedExtensions.some(ext =>
@@ -23,6 +25,7 @@ const AddTask = () => {
     );
   };
 
+  // handle selected or dropped file
   const handleFile = (selectedFile) => {
     setMessage("");
 
@@ -34,7 +37,7 @@ const AddTask = () => {
     setFile(selectedFile);
   };
 
-  // drag events
+  // drag events handler
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -46,6 +49,7 @@ const AddTask = () => {
     }
   };
 
+  // handle file drop
   const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -55,6 +59,7 @@ const AddTask = () => {
     handleFile(droppedFile);
   };
 
+  // upload file and assign tasks
   const upload = async () => {
     if (!file) {
       setMessage("Please select a file");
@@ -100,6 +105,7 @@ const AddTask = () => {
 
       <h3>Upload File</h3>
 
+      {/* drag and drop upload area */}
       <div
         className={`drop-zone ${dragActive ? "active" : ""}`}
         onClick={() => inputRef.current.click()}
@@ -123,6 +129,7 @@ const AddTask = () => {
         />
       </div>
 
+      {/* upload progress */}
       {loading && (
         <div className="progress-wrapper">
           <div
@@ -133,6 +140,7 @@ const AddTask = () => {
         </div>
       )}
 
+      {/* status message */}
       {message && (
         <div className="upload-message">{message}</div>
       )}

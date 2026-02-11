@@ -3,17 +3,22 @@ import axios from "../api/axios";
 import "./addAdmin.css";
 
 function DeleteAdmin() {
+
+  // form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // UI states
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  // submit handler
   const submit = async () => {
     setMessage("");
     setError("");
 
+    // basic validation
     if (!email || !password) {
       setError("Email and password required");
       return;
@@ -22,12 +27,15 @@ function DeleteAdmin() {
     try {
       setLoading(true);
 
+      // API call to delete admin
       const res = await axios.post("/admin/delete", {
         email,
         password,
       });
 
       setMessage(res.data.message);
+
+      // reset fields
       setEmail("");
       setPassword("");
 
@@ -44,9 +52,11 @@ function DeleteAdmin() {
     <div className="add-admin-card">
       <h3>Delete Admin</h3>
 
+      {/* error and success messages */}
       {error && <div className="error-msg">{error}</div>}
       {message && <div className="success-msg">{message}</div>}
 
+      {/* ADMIN EMAIL */}
       <div className="input-group">
         <input
           value={email}
@@ -55,6 +65,7 @@ function DeleteAdmin() {
         <label>Admin Email</label>
       </div>
 
+      {/* PASSWORD */}
       <div className="input-group">
         <input
           type="password"
