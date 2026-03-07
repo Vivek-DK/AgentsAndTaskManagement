@@ -25,7 +25,7 @@ connectDB();
 
 // enable CORS for frontend
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: ["https://agents-and-task-management.vercel.app", "http://localhost:5173"],
   credentials: true
 }));
 
