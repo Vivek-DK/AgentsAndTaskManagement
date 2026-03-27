@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const mongoSanitize = require("express-mongo-sanitize")
 
 // ================= LOAD ENV =================
 dotenv.config();
@@ -32,6 +33,9 @@ app.use(cors({
 // body parsers
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
+
+// Data Sanitize Against NoSql query injection
+app.use(mongoSanitize())
 
 // ================= HEALTH CHECK =================
 app.get("/", (req, res) => {
