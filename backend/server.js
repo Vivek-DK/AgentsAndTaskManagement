@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const mondoSanitize = require("express-mongo-sanitize")
 
 // ================= LOAD ENV =================
 dotenv.config();
@@ -32,6 +33,8 @@ app.use(cors({
 // body parsers
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
+
+app.use(mondoSanitize())
 
 // ================= HEALTH CHECK =================
 app.get("/", (req, res) => {
